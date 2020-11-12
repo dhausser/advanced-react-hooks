@@ -30,7 +30,7 @@ function pokemonCacheReducer(state, action) {
 
 function PokemonCacheProvider(props) {
   const [cache, dispatch] = React.useReducer(pokemonCacheReducer, {})
-  return <PokemonCacheContext.Provider value={[cache, dispatch]} {...props} />
+  return <PokemonCacheProvider.Provider value={[cache, dispatch]} {...props} />
 }
 
 function usePokemonCache() {
