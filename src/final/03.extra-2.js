@@ -5,7 +5,7 @@
 // you can edit this here and look at the isolated page or you can copy/paste
 // this in the regular exercise file.
 
-import React from 'react'
+import * as React from 'react'
 import {useAsync} from '../utils'
 import {
   fetchPokemon,
@@ -30,7 +30,7 @@ function pokemonCacheReducer(state, action) {
 
 function PokemonCacheProvider(props) {
   const [cache, dispatch] = React.useReducer(pokemonCacheReducer, {})
-  return <PokemonCacheProvider.Provider value={[cache, dispatch]} {...props} />
+  return <PokemonCacheContext.Provider value={[cache, dispatch]} {...props} />
 }
 
 function usePokemonCache() {

@@ -1,11 +1,12 @@
 // useContext: Caching response data in context
-// 💯 caching in a context provider (exercise)
-// http://localhost:3000/isolated/exercise/03.extra-2.js
+// 💯 caching in a context provider (final)
+// http://localhost:3000/isolated/final/03.extra-2.js
 
 // you can edit this here and look at the isolated page or you can copy/paste
 // this in the regular exercise file.
 
-import React from 'react'
+import * as React from 'react'
+import {useAsync} from '../utils'
 import {
   fetchPokemon,
   PokemonForm,
@@ -13,7 +14,6 @@ import {
   PokemonInfoFallback,
   PokemonErrorBoundary,
 } from '../pokemon'
-import {useAsync} from '../utils'
 
 const PokemonCacheContext = React.createContext()
 
@@ -30,7 +30,7 @@ function pokemonCacheReducer(state, action) {
 
 function PokemonCacheProvider(props) {
   const [cache, dispatch] = React.useReducer(pokemonCacheReducer, {})
-  return <PokemonCacheProvider.Provider value={[cache, dispatch]} {...props} />
+  return <PokemonCacheContext.Provider value={[cache, dispatch]} {...props} />
 }
 
 function usePokemonCache() {
